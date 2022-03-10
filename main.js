@@ -90,3 +90,15 @@ function convertir(esto)
         pantalla.value = parseFloat(pantalla.value) * (-1);
     }
 }
+
+function decimal(esto)
+{
+    if(pantalla.value == "" || (pantalla.value)[(pantalla.value).length - 1] != '.')
+    {
+        if(huboCalculo)
+            pantalla.value = esto.textContent;
+        else pantalla.value = pantalla.value + esto.textContent;
+        huboCalculo = false;
+        operacionReciente = false;
+    }
+}
