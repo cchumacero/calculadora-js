@@ -83,3 +83,10 @@ function calcular(esto)
     
 }
 
+function convertir(esto)
+{
+    if(operacion == "")
+    {
+        pantalla.value = parseFloat(pantalla.value) * (-1);
+    }
+}
