@@ -8,30 +8,33 @@ function cambiar(esto)
     if(huboCalculo)
     {
         huboCalculo = false;
-        document.querySelector(".pantalla").value = "";
+        pantalla.value = "";
     }
     
-    document.querySelector(".pantalla").value = document.querySelector(".pantalla").value + esto.textContent;
+    pantalla.value = pantalla.value + esto.textContent;
     huboCalculo = false;
 }
 
 function operar(esto)
 {
+    if(operacion != "" && !operacionReciente)
+    {
+        calcular(esto);
+    }
     huboCalculo = false;
-    
     operacion = esto.textContent;
-    a = document.querySelector(".pantalla").value;
+    a = pantalla.value;
     if(!operacionReciente)
     {
-        document.querySelector(".pantalla").value = document.querySelector(".pantalla").value + esto.textContent;
+        pantalla.value = pantalla.value + esto.textContent;
         operacionReciente = true;
     }
-    else document.querySelector(".pantalla").value = (document.querySelector(".pantalla").value).substring(0,(document.querySelector(".pantalla").value).length - 1) + esto.textContent;
+    else pantalla.value = (pantalla.value).substring(0,(pantalla.value).length - 1) + esto.textContent;
 }
 
 function borrar(esto)
 {
-    document.querySelector(".pantalla").value = "";
+    pantalla.value = "";
     a = "";
     b = "";
     operacion = "";
@@ -45,14 +48,14 @@ function calcular(esto)
     {
         huboCalculo = true;
         let bandera = false;
-        for(let i = 0; i < (document.querySelector(".pantalla").value).length; i++)
+        for(let i = 0; i < (pantalla.value).length; i++)
         {
             if(bandera)
             {
-                b += (document.querySelector(".pantalla").value)[i];
+                b += (pantalla.value)[i];
             }
 
-            if((document.querySelector(".pantalla").value)[i] == operacion)
+            if((pantalla.value)[i] == operacion)
                 bandera = true;
             
             
@@ -60,19 +63,19 @@ function calcular(esto)
         let c = parseFloat(a), d = parseFloat(b);
         if(operacion == "+")
         {
-            document.querySelector(".pantalla").value = c + d;
+            pantalla.value = c + d;
         }
         else if(operacion == "-")
         {
-            document.querySelector(".pantalla").value = c - d;
+            pantalla.value = c - d;
         }
         else if(operacion == "/")
         {
-            document.querySelector(".pantalla").value = c / d;
+            pantalla.value = c / d;
         }
         else if(operacion == "x")
         {
-            document.querySelector(".pantalla").value = c * d;
+            pantalla.value = c * d;
         }
         b = "";
         operacion = "";
